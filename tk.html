@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+  <head>
+    <title>Tower Keepers WebGL Revision Beta Builds</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="jquery.cookie.js"</script>
+    <link rel="stylesheet" href="https://assets.nkstatic.com/Games/gameswfs/keepers/build_25/WebContent/style.css">
+    <script src="https://assets.nkstatic.com/Games/gameswfs/keepers/build_25/WebContent/UnityProgress.js"></script>
+    <script src="https://assets.nkstatic.com/Games/gameswfs/keepers/build_25/Build/UnityLoader.js"></script>
+    <!--
+    <script type="text/javascript">
+        var unityObjectUrl = "http://webplayer.unity3d.com/download_webplayer-3.x/3.0/uo/UnityObject2.js";
+        if (document.location.protocol == 'https:')
+            unityObjectUrl = unityObjectUrl.replace("http://", "https://ssl-");
+        document.write('<script type="text/javascript" src="' + unityObjectUrl + '"></script>');
+    </script>
+    <script type="text/javascript">
+        var u = new UnityObject2();
+        u.initPlugin(jQuery("#unityPlayer")[0], "Example.unity3d");
+    </script>
+    -->
+    
+      <style>
+        ul 
+        {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+          background-color: #000;
+        }
+        
+        li 
+        {
+          float: left;
+        }
+        
+        li a 
+        {
+          display: block;
+          color: white;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+        }
+        
+        li a:hover 
+        {
+          background-color: #00ff00;
+        }
+        
+        .active 
+        {
+          background-color: #add8e6;
+        }
+}
+  </style>
+
+  </head>
+  
+  <body>
+	<select id="buildDropdown">
+		<option value="25">Build 25</option>
+		<option value="26">Build 26</option>
+		<option value="27">Build 27</option>
+		<option value="5827">Build 5827</option>
+		<option value="5828">Build 5828</option>
+		<option value="5829">Build 5829</option>
+	</select>
+	<div id="game_container">
+		<div id="game_div">
+			<div class="webgl-content">
+				<div id="gameContainer" style="width: 800px; height: 600px; padding: 0px; margin: 0px; border: 0px none; position: relative; background: rgb(24, 24, 24) none repeat scroll 0% 0%;">
+					<canvas style="cursor: default;" id="#canvas" width="800" height="600"></canvas>
+					<div class="logo Dark" style="display: none;"></div>
+					<div class="progress Dark" style="display: none;">
+						<div class="empty" style="width: 0%;"></div>
+						<div class="full" style="width: 100%;"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<p>Note: Most of these builds are unplayable.</p>
+    <ul>
+        <li><a href="sas4.html">SAS4 Pre-Alpha Build (3/21/2013)</a></li>
+        <li><a href="ble.html">BloonsWorld Alpha Build (2007)</a></li>
+        <li><a href="tk.html" class="active">Tower Keepers WebGL Revision Beta Builds</a></li>
+    </ul>
+  </body>
+  
+  <script type="text/javascript">
+	  $( "#game_div").html('<div class="webgl-content"><div id="gameContainer" style="width: 800px; height: 600px"></div></div>');
+	  var gameInstance = UnityLoader.instantiate("gameContainer", "https://assets.nkstatic.com/Games/gameswfs/keepers/build_" + document.getElementById("buildDropdown").value + "/Build/TK-WebGL-Release.json");
+	  
+	  // listener stuff
+	  function newBuild()
+	  {
+		$( "#game_div").html('<div class="webgl-content"><div id="gameContainer" style="width: 800px; height: 600px"></div></div>');
+		var gameInstance = UnityLoader.instantiate("gameContainer", "https://assets.nkstatic.com/Games/gameswfs/keepers/build_" + this.value + "/Build/TK-WebGL-Release.json");
+	  }
+	  document.getElementById("buildDropdown").onchange = newBuild;
+  </script>
+</html>
